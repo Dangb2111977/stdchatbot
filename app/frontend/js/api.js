@@ -1,8 +1,20 @@
 // app/frontend/js/api.js
 // Gọi API backend + tự xử lý Bearer/refresh (NHƯNG bỏ qua cho /auth/*)
+
 import { getAccessToken, refreshAccessToken } from "./auth.js";
 
-export const API_BASE = window.API_BASE || "http://127.0.0.1:8000";
+// Base URL của backend
+const RAW_API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
+
+// Bỏ dấu "/" cuối nếu có, để nối path cho gọn: API_BASE + "/auth/login"
+export const API_BASE = RAW_API_BASE.endsWith("/")
+  ? RAW_API_BASE.slice(0, -1)
+  : RAW_API_BASE;
+
+// Nếu file khác có `import apiBase from "./api.js"`
+export default API_BASE;
+
+// Endpoint helpers
 export const EP = {
   refresh: "/auth/refresh",
   logout: "/auth/logout",
@@ -32,11 +44,20 @@ function isAuthPath(path) {
 async function parsePayload(res) {
   const ct = res.headers.get("Content-Type") || "";
   if (ct.includes("application/json")) {
-    try { return await res.json(); } catch { return null; }
+    try {
+      return await res.json();
+    } catch {
+      return null;
+    }
   }
-  try { return await res.text(); } catch { return null; }
+  try {
+    return await res.text();
+  } catch {
+    return null;
+  }
 }
 
+// Wrapper dùng fetch + auto gắn Bearer + auto refresh token
 export async function apiFetch(path, opt = {}) {
   const url = path.startsWith("http") ? path : API_BASE + path;
   const headers = new Headers(opt.headers || {});
@@ -47,7 +68,7 @@ export async function apiFetch(path, opt = {}) {
     headers.set("Authorization", "Bearer " + access);
   }
 
-  // ---- Timeout + AbortController (an toàn) ----
+  // ---- Timeout + AbortController ----
   const timeout = opt.timeout ?? DEFAULT_TIMEOUT_MS;
   const controller =
     typeof AbortController !== "undefined" ? new AbortController() : null;
@@ -61,7 +82,7 @@ export async function apiFetch(path, opt = {}) {
 
   let res = await fetch(url, { ...opt, headers, signal });
 
-  // Không auto-refresh trên /auth/*
+  // Nếu 401 & không phải /auth/* => thử refresh token
   if (res.status === 401 && !isAuthPath(path)) {
     try {
       const ok = await refreshAccessToken();
@@ -115,7 +136,9 @@ export async function apiRenameConvo(id, title) {
   if (!r.ok) {
     const payload = await parsePayload(r);
     const err = new Error(`HTTP ${r.status}`);
-    err.status = r.status; err.payload = payload; throw err;
+    err.status = r.status;
+    err.payload = payload;
+    throw err;
   }
   return true;
 }
@@ -125,7 +148,9 @@ export async function apiDeleteConvo(id) {
   if (!r.ok && r.status !== 204) {
     const payload = await parsePayload(r);
     const err = new Error(`HTTP ${r.status}`);
-    err.status = r.status; err.payload = payload; throw err;
+    err.status = r.status;
+    err.payload = payload;
+    throw err;
   }
   return true;
 }
@@ -135,8 +160,15 @@ export async function apiMessages(id) {
   return ensureOkJson(r); // [{role, mtype, content, ...}, ...]
 }
 
-/* ===== Chat ===== */
-export async function apiChat({ question, history = null, convo_id, top_k = 6, lang = "vi", trace = false }) {
+/* ===== Chat (text) ===== */
+export async function apiChat({
+  question,
+  history = null,
+  convo_id,
+  top_k = 6,
+  lang = "vi",
+  trace = false,
+}) {
   const payload = { question, history, convo_id, top_k, lang, trace };
   const r = await apiFetch(EP.chat, {
     method: "POST",
@@ -146,7 +178,15 @@ export async function apiChat({ question, history = null, convo_id, top_k = 6, l
   return ensureOkJson(r); // { answer, trace?, convo_id }
 }
 
-export async function apiChatImage({ question, file, convo_id, top_k = 6, lang = "vi", trace = false }) {
+/* ===== Chat (image) ===== */
+export async function apiChatImage({
+  question,
+  file,
+  convo_id,
+  top_k = 6,
+  lang = "vi",
+  trace = false,
+}) {
   const form = new FormData();
   if (question) form.append("question", question);
   if (file) form.append("image", file);
