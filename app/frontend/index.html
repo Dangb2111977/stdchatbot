@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MedChat (STDs)</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Ghim nút Đăng xuất ở góc trái dưới sidebar (không đổi HTML) -->
+    <style>
+        .sidebar {
+            position: relative;
+        }
+
+        .bubble {
+            white-space: pre-line;   /* ✅ giữ ký tự xuống dòng \n thành <br> */
+        }
+
+
+        /* để phần tử con absolute bám theo sidebar */
+        #logoutBtn {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+        }
+
+        .chats {
+            padding-bottom: 56px;
+        }
+
+        .bubble.speaking { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+
+        /* tránh danh sách hội thoại bị che bởi nút */
+    </style>
+</head>
+
+<body>
+    <!-- AUTH -->
+    <div id="authScreen" class="auth-overlay">
+        <div class="auth-card">
+            <h2 id="authTitle" style="margin:0" data-i18n="auth.title.login">Đăng nhập</h2>
+            <hr />
+            <div id="loginBox">
+                <label for="loginUser" data-i18n="auth.username.label">Username</label>
+                <input id="loginUser" class="input" placeholder="username" data-i18n="auth.username.ph"
+                    data-i18n-attr="placeholder" />
+                <label for="loginPass" style="margin-top:8px" data-i18n="auth.password.label">Mật khẩu</label>
+                <input id="loginPass" class="input" type="password" placeholder="••••••••" data-i18n="auth.password.ph"
+                    data-i18n-attr="placeholder" />
+                <div class="row" style="margin-top:12px">
+                    <button id="doLogin" class="btn primary" data-i18n="auth.login">Đăng nhập</button>
+                    <button id="toRegister" class="btn" data-i18n="auth.quickregister">Đăng ký nhanh</button>
+                </div>
+            </div>
+
+            <div id="regBox" hidden>
+                <label for="regUser" data-i18n="auth.username.label">Username</label>
+                <div class="row" style="gap:10px">
+                    <input id="regUser" class="input" placeholder="username" style="flex:1" data-i18n="auth.username.ph"
+                        data-i18n-attr="placeholder" />
+                    <input id="regPass" class="input" type="password" placeholder="password" style="flex:1"
+                        data-i18n="auth.password.ph" data-i18n-attr="placeholder" />
+                </div>
+                <input id="regFull" class="input" placeholder="Họ tên (tùy chọn)" style="margin-top:8px" />
+                <div class="row" style="margin-top:12px">
+                    <button id="doRegister" class="btn primary" data-i18n="auth.create">Tạo tài khoản</button>
+                    <button id="backLogin" class="btn" data-i18n="auth.back">Quay lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APP -->
+    <div class="layout" id="appScreen" style="display:none">
+        <aside class="sidebar">
+            <div class="brand"><span class="dot"></span><strong>MedChat (STDs)</strong></div>
+            <div class="toolbar">
+                <button id="newChatBtn" class="btn primary" data-i18n="sidebar.new">+ Tạo hội thoại</button>
+                <button id="logoutBtn" class="btn" data-i18n="sidebar.logout">Đăng xuất</button>
+            </div>
+            <div id="chatList" class="chats">
+                <div class="muted" data-i18n="sidebar.empty">Chưa có hội thoại</div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="header">
+                <h1 id="headerTitle" style="margin:0;font-size:20px" data-i18n="header.title">Hội thoại</h1>
+                <div style="display:flex;gap:8px">
+                    <button id="themeBtn" class="btn" data-i18n="header.theme.dark">Tối</button>
+                    <button id="langBtn" class="btn" aria-label="Language">VI</button>
+                    <button id="deleteBtn" class="btn" data-i18n="header.delete">🗑 Xóa</button>
+                </div>
+            </header>
+
+            <section id="messages" class="messages">
+                <div class="empty" data-i18n="messages.empty">Chưa có hội thoại. Tạo hội thoại mới nhé!</div>
+            </section>
+
+            <footer class="composer">
+                <input id="imageInput" type="file" accept="image/*" hidden data-i18n="image.aria"
+                    data-i18n-attr="title,aria-label" />
+                <button id="imageBtn" class="btn" aria-controls="imageInput" data-i18n="image.pick"
+                    data-i18n-attr="text,title,aria-label"></button>
+                
+                <div class="composer">
+                    <button id="micBtn" type="button">🎤</button>
+                </div>
+
+
+                <textarea id="input" placeholder="Hỏi: Sau quan hệ 5 ngày test HIV được chưa?"
+                    aria-label="Nội dung câu hỏi" data-i18n="input.placeholder" data-i18n-attr="placeholder"></textarea>
+                <button id="sendBtn" class="btn primary" data-i18n="send">Gửi</button>
+            </footer>
+        </main>
+    </div>
+    <script> window.API_BASE = "http://127.0.0.1:8000";</script>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
