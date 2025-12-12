@@ -950,3 +950,9 @@ def voice_voices():
 @app.get("/healthz")
 def healthz():
     return {"ok": True}
+
+from fastapi.responses import RedirectResponse
+
+@app.get("/")
+def root():
+    return RedirectResponse(url="/docs")
