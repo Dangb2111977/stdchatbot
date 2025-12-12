@@ -1,0 +1,2150 @@
+{
+  "nodes": {
+    "d:chlamydia": {
+      "type": "Disease",
+      "name": "chlamydia"
+    },
+    "d:gonorrhea": {
+      "type": "Disease",
+      "name": "gonorrhea"
+    },
+    "d:syphilis": {
+      "type": "Disease",
+      "name": "syphilis"
+    },
+    "d:trichomoniasis": {
+      "type": "Disease",
+      "name": "trichomoniasis"
+    },
+    "d:genital_herpes": {
+      "type": "Disease",
+      "name": "genital_herpes"
+    },
+    "d:hpv": {
+      "type": "Disease",
+      "name": "hpv"
+    },
+    "d:hiv": {
+      "type": "Disease",
+      "name": "hiv"
+    },
+    "d:hepatitis_b": {
+      "type": "Disease",
+      "name": "hepatitis_b"
+    },
+    "sec:general": {
+      "type": "Section",
+      "name": "General"
+    },
+    "sec:symptoms": {
+      "type": "Section",
+      "name": "Symptoms"
+    },
+    "sec:treatment": {
+      "type": "Section",
+      "name": "Treatment"
+    },
+    "sec:diagnosis": {
+      "type": "Section",
+      "name": "Diagnosis"
+    },
+    "sec:definition": {
+      "type": "Section",
+      "name": "Definition"
+    },
+    "sec:prevention": {
+      "type": "Section",
+      "name": "Prevention"
+    }
+  },
+  "adj": {
+    "d:chlamydia": [
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          0
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          26
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          29
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          31
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          32
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          33
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          35
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          38
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          58
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          59
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          60
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          61
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          62
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          63
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          64
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          65
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          66
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          78
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          80
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          82
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          83
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          84
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          89
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          219
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          222
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          223
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          224
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          225
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          226
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          227
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          228
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          229
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          230
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          231
+        ]
+      }
+    ],
+    "d:gonorrhea": [
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          0
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          26
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          29
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          34
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          35
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          38
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          58
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          67
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          68
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          69
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          70
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          71
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          72
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          73
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          78
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          80
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          82
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          83
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          88
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          89
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          90
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          110
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          111
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          112
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          113
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          114
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          115
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          116
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          117
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          118
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          119
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          226
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          227
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          229
+        ]
+      }
+    ],
+    "d:syphilis": [
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          0
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          1
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          6
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          19
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          29
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          35
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          36
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          37
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          38
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          78
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          80
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          85
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          86
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          87
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          100
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          101
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          102
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          103
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          104
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          105
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          106
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          107
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          108
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          109
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          194
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          195
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          196
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          197
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          198
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          199
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          200
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          201
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          202
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          203
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          204
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          205
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          206
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          207
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          208
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          209
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          210
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          211
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          212
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          213
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          214
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          215
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          216
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          217
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          218
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          219
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          220
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          221
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          226
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          235
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          236
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          237
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          238
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          239
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          240
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          241
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          242
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          248
+        ]
+      }
+    ],
+    "d:trichomoniasis": [
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          0
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          7
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          20
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          29
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          39
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          40
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          74
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          75
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          76
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          77
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          78
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          79
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          80
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          83
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          232
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          233
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          234
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          259
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          260
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          261
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          262
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          263
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          264
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          265
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          266
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          267
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          270
+        ]
+      }
+    ],
+    "d:genital_herpes": [
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          0
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          2
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          8
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          9
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          10
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          21
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          29
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          41
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          42
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          142
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          152
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          161
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          162
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          163
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          164
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          165
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          166
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          167
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          168
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          169
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          170
+        ]
+      }
+    ],
+    "d:hpv": [
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          0
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          3
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          11
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          12
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          13
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          22
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          29
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          30
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          49
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          50
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          51
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          91
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          132
+        ]
+      },
+      {
+        "dst": "sec:prevention",
+        "rel": "prevents",
+        "weight": 1.0,
+        "evidence": [
+          171
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          172
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          182
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          183
+        ]
+      },
+      {
+        "dst": "sec:prevention",
+        "rel": "prevents",
+        "weight": 1.0,
+        "evidence": [
+          184
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          185
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          186
+        ]
+      },
+      {
+        "dst": "sec:prevention",
+        "rel": "prevents",
+        "weight": 1.0,
+        "evidence": [
+          187
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          188
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          189
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          190
+        ]
+      },
+      {
+        "dst": "sec:prevention",
+        "rel": "prevents",
+        "weight": 1.0,
+        "evidence": [
+          191
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          192
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          193
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          225
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          254
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          255
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          256
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          257
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          258
+        ]
+      }
+    ],
+    "d:hepatitis_b": [
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          4
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          14
+        ]
+      },
+      {
+        "dst": "sec:diagnosis",
+        "rel": "diagnosed_by",
+        "weight": 1.0,
+        "evidence": [
+          15
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          16
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          18
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          24
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          30
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          46
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          47
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          48
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          244
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          248
+        ]
+      },
+      {
+        "dst": "sec:prevention",
+        "rel": "prevents",
+        "weight": 1.0,
+        "evidence": [
+          252
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          253
+        ]
+      }
+    ],
+    "d:hiv": [
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          7
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          8
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          11
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          12
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          13
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          23
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          29
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          38
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          43
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          44
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          45
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          48
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          52
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          53
+        ]
+      },
+      {
+        "dst": "sec:prevention",
+        "rel": "prevents",
+        "weight": 1.0,
+        "evidence": [
+          54
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          55
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          56
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          57
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          58
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          61
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          80
+        ]
+      },
+      {
+        "dst": "sec:prevention",
+        "rel": "prevents",
+        "weight": 1.0,
+        "evidence": [
+          93
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          94
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          97
+        ]
+      },
+      {
+        "dst": "sec:definition",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          142
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          179
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          200
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          207
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          219
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          225
+        ]
+      },
+      {
+        "dst": "sec:symptoms",
+        "rel": "has_symptom",
+        "weight": 1.0,
+        "evidence": [
+          232
+        ]
+      },
+      {
+        "dst": "sec:treatment",
+        "rel": "treated_by",
+        "weight": 1.0,
+        "evidence": [
+          237
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          248
+        ]
+      },
+      {
+        "dst": "sec:general",
+        "rel": "related_to",
+        "weight": 1.0,
+        "evidence": [
+          261
+        ]
+      }
+    ]
+  }
+}

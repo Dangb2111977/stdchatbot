@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedChat (STDs)</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{--bg:#0f172a;--bg2:#111827;--card:#1f2937;--txt:#e5e7eb;--muted:#94a3b8;--primary:#3b82f6;--danger:#ef4444;--shadow:0 6px 20px rgba(0,0,0,.25)}
+    html,[data-theme="dark"]{background:var(--bg);color:var(--txt)}
+    body{margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial}
+    .app{display:grid; grid-template-columns:320px 1fr; height:100vh}
+    .sidebar{background:var(--bg2); padding:16px; border-right:1px solid #0b1020; display:flex; flex-direction:column; gap:12px}
+    .toolbar{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{background:#202a3a; border:1px solid #2b3448; color:var(--txt); padding:8px 12px; border-radius:10px; cursor:pointer}
+    .btn.primary{background:var(--primary); border-color:var(--primary); color:white}
+    .btn.danger{background:#3b1f22; border-color:#5b2228; color:#fecaca}
+    .btn:disabled{opacity:.6; cursor:not-allowed}
+    .list{background:#0f172a; border:1px solid #1e293b; border-radius:12px; padding:10px; overflow:auto; flex:1}
+    .list .item{padding:10px 12px; border-radius:10px; cursor:pointer}
+    .list .item.active{background:#1e293b}
+    .header{display:flex; justify-content:space-between; align-items:center; padding:18px 20px; border-bottom:1px solid #0b1020}
+    .title{font-size:28px; font-weight:800}
+    .actions{display:flex; gap:8px}
+    .messages{height:calc(100vh - 210px); overflow:auto; padding:16px 20px; display:flex; flex-direction:column; gap:14px}
+    .bubble{background:#182233; border:1px solid #233147; padding:16px; border-radius:18px; box-shadow:var(--shadow)}
+    .bubble.user{background:#152239}
+    .bubble img{max-width:320px; border-radius:12px; display:block; margin-top:8px}
+    .composer{display:flex; align-items:center; gap:10px; padding:14px 16px; border-top:1px solid #0b1020}
+    .input{flex:1; min-height:56px; padding:12px 14px; border-radius:14px; border:1px solid #2b3448; background:#0f172a; color:var(--txt)}
+    .muted{color:var(--muted)}
+    .tag{font-size:12px; color:#93c5fd; margin-top:6px}
+    .active{outline:2px solid #3b82f6}
+    .empty{color:var(--muted); padding:16px}
+    .auth{display:none; place-items:center; height:100vh}
+    .auth .card{background:#0b1224; padding:24px; border:1px solid #1e2a45; border-radius:16px; width:360px}
+    .row{display:flex; flex-direction:column; gap:6px; margin-bottom:10px}
+    .row input{padding:10px 12px; border-radius:10px; border:1px solid #2b3448; background:#0f172a; color:var(--txt)}
+  </style>
+</head>
+<body data-theme="dark">
+<div id="auth" class="auth">
+  <div class="card">
+    <h2 id="authTitle" data-i18n="auth.title.login">Đăng nhập</h2>
+    <div class="row">
+      <label for="loginUser" data-i18n="auth.username.label">Username</label>
+      <input id="loginUser" placeholder="username" data-i18n="auth.username.ph" data-i18n-attr="placeholder">
+    </div>
+    <div class="row">
+      <label for="loginPass" data-i18n="auth.password.label">Mật khẩu</label>
+      <input id="loginPass" type="password" placeholder="••••••••" data-i18n="auth.password.ph" data-i18n-attr="placeholder">
+    </div>
+    <div class="row" style="display:flex; gap:8px; flex-direction:row">
+      <button id="doLogin" class="btn primary" data-i18n="auth.login">Đăng nhập</button>
+      <button id="toRegister" class="btn" data-i18n="auth.quickregister">Đăng ký nhanh</button>
+    </div>
+    <div id="regBox" hidden>
+      <div class="row">
+        <label for="regUser" data-i18n="auth.username.label">Username</label>
+        <input id="regUser" placeholder="username" data-i18n="auth.username.ph" data-i18n-attr="placeholder">
+      </div>
+      <div class="row">
+        <label for="regPass" data-i18n="auth.password.label">Mật khẩu</label>
+        <input id="regPass" type="password" placeholder="••••••••" data-i18n="auth.password.ph" data-i18n-attr="placeholder">
+      </div>
+      <div class="row" style="display:flex; gap:8px; flex-direction:row">
+        <button id="doRegister" class="btn primary" data-i18n="auth.create">Tạo tài khoản</button>
+        <button id="backLogin" class="btn" data-i18n="auth.back">Quay lại</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="app" style="display:none">
+  <aside class="sidebar">
+    <div class="toolbar">
+      <button id="newChatBtn" class="btn primary" data-i18n="sidebar.new">+ Tạo hội thoại</button>
+      <button id="exportBtn" class="btn" data-i18n="sidebar.export">Xuất</button>
+      <button id="clearBtn" class="btn" data-i18n="sidebar.clear">Xóa</button>
+    </div>
+    <button id="logoutBtn" class="btn" data-i18n="sidebar.logout">Đăng xuất</button>
+
+    <div class="list" id="convos">
+      <div id="convosEmpty" class="empty" data-i18n="sidebar.empty">Chưa có hội thoại</div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="header">
+      <div class="title" id="headerTitle" data-i18n="header.title">Hội thoại</div>
+      <div class="actions">
+        <button id="themeBtn" class="btn" data-i18n="header.theme.dark">Tối</button>
+        <button id="langBtn" class="btn" aria-label="Language">VI</button>
+        <button id="deleteBtn" class="btn danger" data-i18n="header.delete">🗑 Xóa</button>
+      </div>
+    </div>
+
+    <section class="messages" id="messages">
+      <div class="empty" data-i18n="messages.empty">Chưa có hội thoại. Tạo hội thoại mới nhé!</div>
+    </section>
+
+    <div class="composer">
+      <button id="imageBtn" class="btn" data-i18n="image.pick" data-i18n-attr="title,aria-label">📷 Chọn ảnh</button>
+      <input id="imageFile" type="file" accept="image/*" hidden>
+      <button id="imageClearBtn" class="btn" style="margin-left:6px" hidden>✕</button>
+      <span id="imageHint" class="muted" style="margin-left:8px"></span>
+
+      <textarea id="input" class="input" rows="2"
+        placeholder="Hỏi: Sau quan hệ 5 ngày test HIV được chưa?"
+        data-i18n="input.placeholder" data-i18n-attr="placeholder"></textarea>
+      <button id="sendBtn" class="btn primary" data-i18n="send">Gửi</button>
+    </div>
+  </main>
+</div>
+
+<script>
+let LANG = localStorage.getItem("lang") || (
+  navigator.language?.toLowerCase().startsWith("vi") ? "vi" : "en"
+);
+const I18N = {
+  vi: {
+    "auth.title.login": "Đăng nhập",
+    "auth.title.register": "Đăng ký",
+    "auth.username.label": "Username",
+    "auth.password.label": "Mật khẩu",
+    "auth.username.ph": "username",
+    "auth.password.ph": "••••••••",
+    "auth.login": "Đăng nhập",
+    "auth.quickregister": "Đăng ký nhanh",
+    "auth.create": "Tạo tài khoản",
+    "auth.back": "Quay lại",
+    "sidebar.new": "+ Tạo hội thoại",
+    "sidebar.export": "Xuất",
+    "sidebar.clear": "Xóa",
+    "sidebar.logout": "Đăng xuất",
+    "sidebar.empty": "Chưa có hội thoại",
+    "header.title": "Hội thoại",
+    "header.theme.dark": "Tối",
+    "header.theme.light": "Sáng",
+    "header.delete": "🗑 Xóa",
+    "messages.empty": "Chưa có hội thoại. Tạo hội thoại mới nhé!",
+    "image.pick": "📷 Chọn ảnh",
+    "image.aria": "Chọn ảnh",
+    "image.selected": "Đã chọn ảnh",
+    "image.removed": "Đã bỏ ảnh",
+    "input.placeholder": "Hỏi: Sau quan hệ 5 ngày test HIV được chưa?",
+    "send": "Gửi",
+    "toast.sessionExpired": "⚠️ Phiên đã hết hạn, vui lòng đăng nhập.",
+    "toast.analyzing": "Đang phân tích ảnh…",
+    "toast.writing": "Đang soạn trả lời…",
+    "toast.deleteConfirm": "Xóa cuộc trò chuyện hiện tại?",
+    "toast.deleteFail": "Xóa thất bại: ",
+    "toast.needSelect": "Chưa chọn cuộc trò chuyện",
+    "toast.needCred": "Nhập username & mật khẩu",
+    "toast.registerNeed": "Username & mật khẩu bắt buộc",
+    "toast.loginFail": "Đăng nhập thất bại: ",
+    "toast.registerFail": "Đăng ký thất bại: "
+  },
+  en: {
+    "auth.title.login": "Sign in",
+    "auth.title.register": "Register",
+    "auth.username.label": "Username",
+    "auth.password.label": "Password",
+    "auth.username.ph": "username",
+    "auth.password.ph": "••••••••",
+    "auth.login": "Sign in",
+    "auth.quickregister": "Quick sign-up",
+    "auth.create": "Create account",
+    "auth.back": "Back",
+    "sidebar.new": "+ New chat",
+    "sidebar.export": "Export",
+    "sidebar.clear": "Clear",
+    "sidebar.logout": "Logout",
+    "sidebar.empty": "No conversations",
+    "header.title": "Conversation",
+    "header.theme.dark": "Dark",
+    "header.theme.light": "Light",
+    "header.delete": "🗑 Delete",
+    "messages.empty": "No messages yet. Start a new conversation!",
+    "image.pick": "📷 Choose image",
+    "image.aria": "Choose image",
+    "image.selected": "Image selected",
+    "image.removed": "Image cleared",
+    "input.placeholder": "Ask: Is 5 days after exposure too early to test for HIV?",
+    "send": "Send",
+    "toast.sessionExpired": "⚠️ Session expired, please sign in.",
+    "toast.analyzing": "Analyzing image…",
+    "toast.writing": "Composing answer…",
+    "toast.deleteConfirm": "Delete this conversation?",
+    "toast.deleteFail": "Delete failed: ",
+    "toast.needSelect": "No conversation selected",
+    "toast.needCred": "Enter username & password",
+    "toast.registerNeed": "Username & password are required",
+    "toast.loginFail": "Login failed: ",
+    "toast.registerFail": "Register failed: "
+  }
+};
+function t(key){ return (I18N[LANG] && I18N[LANG][key]) || I18N.vi[key] || key; }
+function applyI18N() {
+  document.documentElement.setAttribute("lang", LANG);
+  const langBtn = document.getElementById("langBtn");
+  if (langBtn) langBtn.textContent = (LANG === "vi") ? "VI" : "EN";
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    const attrs = (el.getAttribute("data-i18n-attr")||"").split(",").map(s=>s.trim()).filter(Boolean);
+    if (!attrs.length) {
+      el.textContent = t(key);
+    } else {
+      for (const a of attrs) {
+        if (a === "placeholder") el.setAttribute("placeholder", t(key));
+        else if (a === "title") el.setAttribute("title", t(key));
+        else if (a === "aria-label") el.setAttribute("aria-label", t(key));
+        else el.setAttribute(a, t(key));
+      }
+    }
+  });
+  const themeBtn = document.getElementById("themeBtn");
+  if (themeBtn) {
+    const cur = document.body.getAttribute('data-theme') || 'dark';
+    themeBtn.textContent = (cur === 'dark') ? t("header.theme.dark") : t("header.theme.light");
+  }
+}
+function setLang(next){
+  LANG = next;
+  localStorage.setItem("lang", LANG);
+  applyI18N();
+}
+</script>
+
+<script>
+const API = "";
+const $ = (s, p=document) => p.querySelector(s);
+const state = { imageFile:null, convoId:null, messages:[] };
+
+function accessToken(){ return localStorage.getItem("access_token") || ""; }
+function setAccessToken(x){ localStorage.setItem("access_token", x); }
+function headersJSON(){
+  const h = { "Content-Type":"application/json" };
+  const tok = accessToken(); if (tok) h["Authorization"] = "Bearer " + tok;
+  return h;
+}
+
+async function apiRegister(u,p){
+  const r = await fetch(API + "/auth/register", {
+    method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({username:u,password:p})
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function apiLogin(u,p){
+  const r = await fetch(API + "/auth/login", {
+    method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({username:u,password:p})
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function apiMe(){
+  const r = await fetch(API + "/me", { headers:{ "Authorization":"Bearer " + accessToken() }});
+  if (!r.ok) throw new Error("unauthorized");
+  return r.json();
+}
+async function apiListConvos(){
+  const r = await fetch(API + "/conversations", { headers:{ "Authorization":"Bearer " + accessToken() }});
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function apiCreateConvo(title="Conversation"){
+  const r = await fetch(API + "/conversations", {
+    method:"POST", headers: headersJSON(),
+    body: JSON.stringify({title})
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function apiDeleteConvo(id){
+  const r = await fetch(API + "/conversations/"+id, {
+    method:"DELETE", headers:{ "Authorization":"Bearer " + accessToken() }
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function apiGetMessages(id){
+  const r = await fetch(API + "/conversations/"+id+"/messages", {
+    headers:{ "Authorization":"Bearer " + accessToken() }
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function apiChat(convo_id, question){
+  const r = await fetch(API + "/chat", {
+    method:"POST", headers: headersJSON(),
+    body: JSON.stringify({question, convo_id})
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function apiChatImage(convo_id, question, file){
+  const form = new FormData();
+  form.append("convo_id", convo_id);
+  form.append("question", question || "");
+  form.append("image", file);
+  const r = await fetch(API + "/chat-image", {
+    method:"POST", headers:{ "Authorization":"Bearer " + accessToken() }, body: form
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+function toast(s){ console.log("TOAST:", s); }
+function renderConvos(list){
+  const box = $("#convos"); box.innerHTML = "";
+  if (!list.length){
+    const d = document.createElement("div"); d.id="convosEmpty"; d.className="empty"; d.setAttribute("data-i18n","sidebar.empty"); d.textContent=t("sidebar.empty");
+    box.appendChild(d); return;
+  }
+  for(const c of list){
+    const div = document.createElement("div");
+    div.className = "item" + (c.id===state.convoId ? " active" : "");
+    div.textContent = c.title || "Conversation";
+    div.onclick = async ()=>{ state.convoId = c.id; await openConvo(c.id); };
+    box.appendChild(div);
+  }
+}
+function renderMessages(items){
+  const m = $("#messages"); m.innerHTML = "";
+  if (!items.length){
+    const d = document.createElement("div"); d.className="empty"; d.setAttribute("data-i18n","messages.empty"); d.textContent=t("messages.empty");
+    m.appendChild(d); return;
+  }
+  for(const it of items){
+    const div = document.createElement("div");
+    div.className = "bubble " + (it.role==="user" ? "user" : "bot");
+    if (it.mtype === "image" && it.image_path){
+      const cap = document.createElement("div");
+      cap.textContent = it.content || "";
+      div.appendChild(cap);
+      const img = document.createElement("img");
+      img.src = it.image_path; img.alt="upload";
+      div.appendChild(img);
+    } else {
+      div.textContent = it.content || "";
+    }
+    m.appendChild(div);
+  }
+  m.scrollTop = m.scrollHeight;
+}
+
+function bindImagePicker() {
+  const btn   = $('#imageBtn');
+  const input = $('#imageFile');
+  const hint  = $('#imageHint');
+  const clear = $('#imageClearBtn');
+  if (!btn || !input) return;
+
+  btn.addEventListener('click', (e) => { e.preventDefault(); input.click(); });
+  input.addEventListener('change', () => {
+    const f = input.files && input.files[0];
+    if (f) {
+      state.imageFile = f;
+      btn.classList.add('active');
+      hint.textContent = `${t('image.selected')}: ${f.name}`;
+      clear.hidden = false;
+    } else {
+      state.imageFile = null;
+      btn.classList.remove('active');
+      hint.textContent = '';
+      clear.hidden = true;
+    }
+  });
+  clear.addEventListener('click', (e) => {
+    e.preventDefault();
+    input.value = '';
+    state.imageFile = null;
+    btn.classList.remove('active');
+    hint.textContent = t('image.removed');
+    clear.hidden = true;
+    setTimeout(() => { if (hint.textContent === t('image.removed')) hint.textContent=''; }, 2000);
+  });
+}
+
+async function openConvo(id){
+  try{
+    const msgs = await apiGetMessages(id);
+    state.messages = msgs;
+    renderMessages(msgs);
+  }catch(e){ toast(e.message || e); }
+}
+async function ensureConvo(){
+  if (state.convoId) return state.convoId;
+  const c = await apiCreateConvo("Conversation");
+  state.convoId = c.id; await refreshConvos();
+  return c.id;
+}
+async function refreshConvos(){
+  const list = await apiListConvos();
+  renderConvos(list);
+}
+async function sendMessage(){
+  const q = $("#input").value.trim();
+  if (!q && !state.imageFile) return;
+  const id = await ensureConvo();
+  try{
+    if (state.imageFile){
+      await apiChatImage(id, q, state.imageFile);
+    }else{
+      await apiChat(id, q);
+    }
+    $("#input").value = "";
+    await openConvo(id);
+  }catch(e){
+    toast(e.message||e);
+  }finally{
+    if (state.imageFile) $("#imageClearBtn").click();
+  }
+}
+
+document.getElementById("themeBtn").onclick = () => {
+  const cur = document.body.getAttribute("data-theme") || "dark";
+  const next = (cur==="dark"?"light":"dark");
+  document.body.setAttribute("data-theme", next);
+  applyI18N();
+};
+document.getElementById("langBtn").onclick = () => setLang(LANG==="vi"?"en":"vi");
+
+document.addEventListener("DOMContentLoaded", async () => {
+  document.getElementById("toRegister").onclick = () => {
+    document.getElementById("regBox").hidden = false; document.getElementById("toRegister").disabled = true;
+    document.getElementById("authTitle").setAttribute("data-i18n","auth.title.register"); applyI18N();
+  };
+  document.getElementById("backLogin").onclick = () => {
+    document.getElementById("regBox").hidden = true; document.getElementById("toRegister").disabled = false;
+    document.getElementById("authTitle").setAttribute("data-i18n","auth.title.login"); applyI18N();
+  };
+  document.getElementById("doRegister").onclick = async () => {
+    const u=document.getElementById("regUser").value.trim(), p=document.getElementById("regPass").value.trim();
+    if (!u||!p) return alert(t("toast.registerNeed"));
+    try{
+      const tok = await apiRegister(u,p);
+      setAccessToken(tok.access_token); showApp(); await refreshConvos();
+    }catch(e){ alert(t("toast.registerFail")+(e.message||e)); }
+  };
+  document.getElementById("doLogin").onclick = async () => {
+    const u=document.getElementById("loginUser").value.trim(), p=document.getElementById("loginPass").value.trim();
+    if (!u||!p) return alert(t("toast.needCred"));
+    try{
+      const tok = await apiLogin(u,p);
+      setAccessToken(tok.access_token); showApp(); await refreshConvos();
+    }catch(e){ alert(t("toast.loginFail")+(e.message||e)); }
+  };
+  document.getElementById("logoutBtn").onclick = () => { localStorage.removeItem("access_token"); showAuth(); };
+
+  document.getElementById("newChatBtn").onclick = async () => { state.convoId=null; await ensureConvo(); await refreshConvos(); document.getElementById("messages").innerHTML=""; };
+  document.getElementById("deleteBtn").onclick = async () => {
+    if (!state.convoId) return alert(t("toast.needSelect"));
+    if (!confirm(t("toast.deleteConfirm"))) return;
+    try{ await apiDeleteConvo(state.convoId); state.convoId=null; await refreshConvos(); document.getElementById("messages").innerHTML=""; }
+    catch(e){ alert(t("toast.deleteFail")+(e.message||e)); }
+  };
+  document.getElementById("sendBtn").onclick = sendMessage;
+  document.getElementById("input").addEventListener("keydown", e => { if (e.key==="Enter" && !e.shiftKey){ e.preventDefault(); sendMessage(); } });
+
+  bindImagePicker();
+  applyI18N();
+  try{ await apiMe(); showApp(); await refreshConvos(); }catch{ showAuth(); }
+});
+
+function showApp(){ document.getElementById("auth").style.display="grid"; document.getElementById("auth").style.display="none"; document.getElementById("app").style.display="grid"; }
+function showAuth(){ document.getElementById("auth").style.display="grid"; document.getElementById("app").style.display="none"; }
+</script>
+</body>
+</html>

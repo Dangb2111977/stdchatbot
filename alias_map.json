@@ -1,0 +1,10 @@
+{
+  "d:chlamydia":   {"type":"Disease","name":"Chlamydia","aliases":["chlamydia","Chlamydia trachomatis"]},
+  "d:gonorrhea":   {"type":"Disease","name":"Gonorrhea","aliases":["gonorrhea","gonorrhoea","lậu"]},
+  "d:syphilis":    {"type":"Disease","name":"Syphilis","aliases":["syphilis","giang mai"]},
+  "d:trichomoniasis":{"type":"Disease","name":"Trichomoniasis","aliases":["trichomoniasis","trichomonas","trich"]},
+  "d:genital_herpes":{"type":"Disease","name":"Genital herpes","aliases":["genital herpes","HSV-2","herpes simplex"]},
+  "d:hpv":         {"type":"Disease","name":"HPV","aliases":["HPV","genital warts","papillomavirus"]},
+  "d:hiv":         {"type":"Disease","name":"HIV","aliases":["HIV","human immunodeficiency virus"]},
+  "d:hepatitis_b": {"type":"Disease","name":"Hepatitis B","aliases":["hepatitis b","HBV"]}
+}

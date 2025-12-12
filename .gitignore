@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+venv/
+
+# OS / editor junk
+.DS_Store
+.vscode/
+.idea/
+
+# Secrets / config
+.env
+
+# Runtime artifacts
+uploads/
+logs/
+

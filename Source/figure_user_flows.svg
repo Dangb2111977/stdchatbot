@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <style>
+      .title { font: bold 28px 'Segoe UI', Arial, sans-serif; fill: #111; }
+      .lane-title { font: bold 22px 'Segoe UI', Arial, sans-serif; fill: #222; }
+      .box { fill: #f7f9fc; stroke: #6b82a7; stroke-width: 2; rx: 10; }
+      .box-auth { fill: #eef4ff; }
+      .box-chat { fill: #f4ffef; }
+      .db { fill: #fff7e6; }
+      .text { font: 18px 'Segoe UI', Arial, sans-serif; fill: #111; }
+      .small { font: 16px 'Segoe UI', Arial, sans-serif; fill: #333; }
+      .note { font: italic 16px 'Segoe UI', Arial, sans-serif; fill: #444; }
+      .line { stroke: #444; stroke-width: 2; marker-end: url(#arrow); }
+      .swimlane { fill: none; stroke: #e0e6ef; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="800.0" y="50" text-anchor="middle" class="title">User Flows — Authentication & Chat Workspace</text>
+
+  <!-- Swimlanes -->
+  <rect x="60" y="80" width="720.0" height="860" class="swimlane"/>
+  <rect x="820.0" y="80" width="720.0" height="860" class="swimlane"/>
+  <text x="420.0" y="110" text-anchor="middle" class="lane-title">Authentication</text>
+  <text x="1180.0" y="110" text-anchor="middle" class="lane-title">Chat workspace</text>
+
+  <!-- Authentication boxes -->
+  <rect x="100" y="140" width="580" height="90" class="box box-auth"/>
+  <text x="390" y="180" text-anchor="middle" class="text">User registers / logs in</text>
+  <text x="390" y="205" text-anchor="middle" class="small">POST /auth/register • POST /auth/login</text>
+
+  <line x1="390" y1="230" x2="390" y2="255" class="line"/>
+
+  <rect x="130" y="255" width="520" height="90" class="box box-auth"/>
+  <text x="390" y="292" text-anchor="middle" class="text">Auth API validates credentials</text>
+  <text x="390" y="317" text-anchor="middle" class="small">Issues short‑lived JWT access token + refresh token</text>
+
+  <line x1="390" y1="345" x2="390" y2="370" class="line"/>
+
+  <rect x="110" y="370" width="560" height="110" class="box box-auth"/>
+  <text x="390" y="405" text-anchor="middle" class="text">Token handling</text>
+  <text x="390" y="430" text-anchor="middle" class="small">Access token stored client‑side (short‑lived)</text>
+  <text x="390" y="455" text-anchor="middle" class="small">Refresh token used to obtain new access tokens</text>
+
+  <line x1="390" y1="480" x2="390" y2="505" class="line"/>
+
+  <rect x="160" y="505" width="460" height="90" class="box box-auth"/>
+  <text x="390" y="540" text-anchor="middle" class="text">Authorized API calls</text>
+  <text x="390" y="565" text-anchor="middle" class="small">Bearer access token</text>
+
+  <!-- Chat workspace boxes -->
+  <rect x="860" y="140" width="580" height="110" class="box box-chat"/>
+  <text x="1150" y="175" text-anchor="middle" class="text">Text input and image upload</text>
+  <text x="1150" y="200" text-anchor="middle" class="small">Lesion/skin questions • POST /chat-image (multipart)</text>
+  <text x="1150" y="225" text-anchor="middle" class="small">Creates named conversations</text>
+
+  <line x1="1150" y1="250" x2="1150" y2="275" class="line"/>
+
+  <rect x="900" y="275" width="500" height="90" class="box box-chat"/>
+  <text x="1150" y="310" text-anchor="middle" class="text">Uploads API persists file</text>
+  <text x="1150" y="335" text-anchor="middle" class="small">Returns public URL → stored in chat_messages.image_path</text>
+
+  <line x1="1150" y1="365" x2="1150" y2="390" class="line"/>
+
+  <rect x="900" y="390" width="500" height="110" class="box box-chat"/>
+  <text x="1150" y="425" text-anchor="middle" class="text">Hybrid RAG pipeline</text>
+  <text x="1150" y="450" text-anchor="middle" class="small">BM25 + FAISS + RRF → grounded answer with citations</text>
+
+  <line x1="1150" y1="500" x2="1150" y2="525" class="line"/>
+
+  <rect x="880" y="525" width="540" height="110" class="box box-chat"/>
+  <text x="1150" y="560" text-anchor="middle" class="text">Persist dialogue & render UI</text>
+  <text x="1150" y="585" text-anchor="middle" class="small">Save to conversations & chat_messages (citations, image_path)</text>
+  <text x="1150" y="610" text-anchor="middle" class="small">Scrollable history; clickable citations (title · section · URL)</text>
+
+  <!-- Connect auth to chat pipeline -->
+  <line x1="620" y1="550" x2="860" y2="440" class="line"/>
+
+  <!-- DB icons -->
+  <rect x="1040" y="675" width="360" height="160" class="box db"/>
+  <text x="1220" y="705" text-anchor="middle" class="text">Database (MySQL)</text>
+  <text x="1220" y="735" text-anchor="middle" class="small">tables: users, user_sessions</text>
+  <text x="1220" y="760" text-anchor="middle" class="small">conversations, chat_messages</text>
+  <text x="1220" y="785" text-anchor="middle" class="note">refresh_token_hash stored server‑side</text>
+
+  <!-- Notes -->
+  <text x="390" y="645" text-anchor="middle" class="note">Privacy: short‑lived access token; no PHI in logs</text>
+</svg>
